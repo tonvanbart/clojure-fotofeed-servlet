@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <style type="text/css">
+        #picasa-album {
+            width: 800px;
+        }
+        #picasa-album img {
+            width: 20%;
+            padding: 3px;
+            /*height: 50%;*/
+        }
+    </style>
+    <title>Fotofeed results</title>
+</head>
+<body>
+    <script language="javascript">
+        (function main() {
+            $(document).ready(function() {
+                var feedurl = "https://picasaweb.google.com/data/feed/base/user/113853148746021127763/albumid/5630409920713617121?alt=rss&kind=photo&hl=en_US";
+                var jsonp_url = "fotos?callback=?";
+                $.getJSON(jsonp_url, {"url" : feedurl}, function(result_html) {
+                   $("#picasa-album").html(result_html);
+                });
+
+
+            });
+        })();
+    </script>
+    <p>Here are the images from the feed:</p>
+    <div id="picasa-album">loading...</div>
+</body>
+</html>
